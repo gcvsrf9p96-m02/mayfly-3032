@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050606">
+<title>MAYFLY 3032 // ARCHIVE</title>
+<style>
+:root{--bg:#050606;--panel:#0b0e0e;--line:#29302e;--text:#d7ded9;--muted:#78827c;--green:#a9c9ad;--red:#b77e76;--mono:"Courier New",monospace}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -20%,#17201c 0%,#080b0a 42%,var(--bg) 75%);color:var(--text);font-family:var(--mono);min-height:100vh;letter-spacing:.025em}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.11;background:repeating-linear-gradient(0deg,transparent 0px,transparent 2px,#b7c8bb 3px);mix-blend-mode:screen}
+a{color:var(--green)}
+.wrap{max-width:920px;margin:0 auto;padding:28px 22px 70px}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:10px 0 18px;font-size:11px;color:var(--muted);letter-spacing:.18em}
+.signal{color:var(--green)}
+.hero{text-align:center;padding:78px 0 48px}
+.sig{font-size:clamp(38px,8vw,70px);letter-spacing:.2em;margin:0 0 12px;color:#e1e8e2;font-weight:400}
+.sub{font-size:11px;color:var(--muted);letter-spacing:.32em}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:28px auto;max-width:560px}
+.intro{max-width:600px;margin:0 auto;color:#aab4ad;line-height:1.9;font-size:13px}
+.smallcaps{font-size:10px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase}
+.panel{border:1px solid var(--line);background:rgba(9,13,11,.88);padding:25px;margin:18px 0;box-shadow:0 14px 50px #0005}
+.panelhead{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+.panel h2{font-size:13px;font-weight:400;letter-spacing:.16em;margin:0;color:var(--green)}
+.status{font-size:10px;color:var(--muted)}
+p{font-size:13px;line-height:1.85;color:#aeb8b1}
+.data{border:1px solid #26302a;background:#070a08;padding:17px;white-space:pre-wrap;overflow-wrap:anywhere;color:#dce6dd;font-size:13px;line-height:1.8}
+input{width:100%;background:#050706;border:1px solid #38443c;color:#e5eee6;padding:14px;font:13px var(--mono);outline:none;margin:12px 0}
+input:focus{border-color:var(--green);box-shadow:0 0 0 1px #a9c9ad33}
+button{font:11px var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:12px 17px;background:#111a14;border:1px solid #526857;color:var(--green);cursor:pointer}
+button:hover{background:#1a2a1e}
+button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{min-height:22px;font-size:11px;color:var(--red);padding-top:10px}
+.good{color:var(--green)}
+details{border-top:1px solid var(--line);margin-top:16px;padding-top:13px;color:var(--muted);font-size:11px}
+summary{cursor:pointer;letter-spacing:.1em}
+.hint{color:#aeb8b1;line-height:1.8;padding:10px 0 0}
+.locked{opacity:.42}
+footer{border-top:1px solid var(--line);margin-top:45px;padding-top:18px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#626e66;font-size:10px;letter-spacing:.12em}
+.hidden{display:none!important}
+#final{border-color:#526857}
+.finalmark{text-align:center;font-size:32px;letter-spacing:.3em;color:var(--green);padding:15px}
+@media(max-width:600px){.hero{padding:55px 0 35px}.panel{padding:18px}.top{font-size:9px}.sig{letter-spacing:.12em}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><span>M / 3032</span><span class="signal">● SIGNAL PRESENT</span><span>PUBLIC TERMINAL // 01</span></header>
+  <section class="hero">
+    <div class="smallcaps">an index of unfinished things</div>
+    <h1 class="sig">MAYFLY</h1>
+    <div class="sub">THIRTY · THIRTY · THIRTY-TWO</div>
+    <div class="rule"></div>
+    <p class="intro">You have reached a public-facing fragment of the archive.<br>
+    No instructions have been provided. That is intentional.<br>
+    Read carefully. Preserve what you find. Verify every conclusion.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panelhead"><h2>NOTICE 00 // READ BEFORE PROCEEDING</h2><span class="status">UNSIGNED COPY</span></div>
+    <p>There are records that were never meant to form a sequence. Someone arranged them anyway.</p>
+    <p>The archive does not reward speed. It rewards attention, patience, and the ability to distinguish a clue from decoration.</p>
+    <p class="smallcaps">Three gates are currently exposed. Further material remains sealed.</p>
+  </section>
+
+  <section class="panel" id="gate1">
+    <div class="panelhead"><h2>GATE I // SHIFT</h2><span class="status" id="s1">LOCKED</span></div>
+    <p>A note was recovered from the margin of a damaged record. The alphabet has been moved. The number is not written beside it.</p>
+    <div class="data">WKH VKDGRZ LV ORQJHU WKDQ WKH VRXUFH</div>
+    <p class="smallcaps">Recover the single word that identifies what the note describes.</p>
+    <input id="a1" autocomplete="off" spellcheck="false" placeholder="ENTER RESPONSE">
+    <div class="row"><button onclick="check(1)">Submit</button><button class="secondary" onclick="clearInput(1)">Clear</button></div>
+    <div class="feedback" id="f1" aria-live="polite"></div>
+    <details><summary>REQUEST HINT // 01</summary><div class="hint">The message uses a Caesar shift. Try moving each letter three places backward. The answer is the subject of the sentence, not the entire sentence.</div></details>
+  </section>
+
+  <section class="panel locked" id="gate2" aria-label="Gate two locked">
+    <div class="panelhead"><h2>GATE II // INDEX</h2><span class="status" id="s2">SEALED</span></div>
+    <p>The next record contains no letters. It uses the ordinary order of the alphabet, but its separators matter.</p>
+    <div class="data">13 · 1 · 25 · 6 · 12 · 25</div>
+    <p class="smallcaps">Convert the sequence. Submit the resulting word.</p>
+    <input id="a2" autocomplete="off" spellcheck="false" placeholder="GATE I REQUIRED" disabled>
+    <div class="row"><button onclick="check(2)" disabled id="b2">Submit</button></div>
+    <div class="feedback" id="f2" aria-live="polite"></div>
+    <details><summary>REQUEST HINT // 02</summary><div class="hint">Use A = 1, B = 2, continuing through Z = 26. Read each number as a letter.</div></details>
+  </section>
+
+  <section class="panel locked" id="gate3" aria-label="Gate three locked">
+    <div class="panelhead"><h2>GATE III // MACHINE</h2><span class="status" id="s3">SEALED</span></div>
+    <p>The final exposed fragment is not written in an alphabet. It is written in a base used to represent bytes.</p>
+    <div class="data">33 30 33 32</div>
+    <p class="smallcaps">Interpret each pair as hexadecimal ASCII. Submit the four-character result.</p>
+    <input id="a3" autocomplete="off" spellcheck="false" placeholder="GATE II REQUIRED" disabled>
+    <div class="row"><button onclick="check(3)" disabled id="b3">Submit</button></div>
+    <div class="feedback" id="f3" aria-live="polite"></div>
+    <details><summary>REQUEST HINT // 03</summary><div class="hint">Each pair is a hexadecimal byte. Convert the bytes to decimal, then read the corresponding ASCII characters.</div></details>
+  </section>
+
+  <section class="panel hidden" id="final">
+    <div class="panelhead"><h2>ARCHIVE // FRAGMENT 3032</h2><span class="status good">ACCESS GRANTED</span></div>
+    <div class="finalmark">∴</div>
+    <p class="good" style="text-align:center">THREE GATES OPENED. THE ARCHIVE REMAINS INCOMPLETE.</p>
+    <div class="data">FRAGMENT: 3032
+STATUS: RECOVERED
+ORIGIN: WITHHELD
+
+A mayfly is not defined by the length of its life.
+It is defined by what it leaves in the air.
+
+You have found the index.
+You have not found the source.</div>
+    <p>Further records have not yet been attached to this public copy.</p>
+    <button onclick="resetProgress()">Reset local progress</button>
+  </section>
+
+  <footer><span>MAYFLY 3032 // FICTIONAL ARCHIVE</span><span>NO TRACKING // LOCAL PROGRESS ONLY</span><span>REV. 03.32</span></footer>
+</div>
+<script>
+const answers={1:"SHADOW",2:"MAYFLY",3:"3032"};
+function unlock(n){
+ const next=document.getElementById("gate"+n);
+ if(next){next.classList.remove("locked");next.setAttribute("aria-label","Gate "+n+" unlocked");const input=next.querySelector("input");const button=next.querySelector("button");input.disabled=false;input.placeholder="ENTER RESPONSE";button.disabled=false;}
+}
+function check(n){
+ const input=document.getElementById("a"+n);
+ const feedback=document.getElementById("f"+n);
+ const value=input.value.trim().toUpperCase().replace(/\s+/g,"");
+ if(value===answers[n]){
+  feedback.textContent="ACCEPTED. RECORD UNSEALED.";
+  feedback.className="feedback good";
+  document.getElementById("s"+n).textContent="UNSEALED";
+  document.getElementById("s"+n).className="status good";
+  localStorage.setItem("mayfly3032_gate"+n,"open");
+  if(n<3)unlock(n+1);else document.getElementById("final").classList.remove("hidden");
+ }else{
+  feedback.textContent="NO MATCH. THE RECORD REMAINS SEALED.";
+  feedback.className="feedback";
+ }
+}
+function clearInput(n){document.getElementById("a"+n).value="";document.getElementById("f"+n).textContent="";}
+function resetProgress(){
+ for(let n=1;n<=3;n++)localStorage.removeItem("mayfly3032_gate"+n);
+ location.reload();
+}
+window.addEventListener("DOMContentLoaded",()=>{
+ for(let n=1;n<=3;n++){
+  if(localStorage.getItem("mayfly3032_gate"+n)==="open"){
+   document.getElementById("s"+n).textContent="UNSEALED";
+   document.getElementById("s"+n).className="status good";
+   if(n<3)unlock(n+1);
+   else document.getElementById("final").classList.remove("hidden");
+  }
+ }
+});
+document.querySelectorAll("input").forEach((el,i)=>el.addEventListener("keydown",e=>{if(e.key==="Enter")check(i+1)}));
+</script>
+</body>
+</html>
